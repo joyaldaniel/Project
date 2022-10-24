@@ -1,0 +1,53 @@
+<%- include('../layouts/header.ejs') %>
+    <%- include('../partials/user-navbar-loggedin.ejs') %>
+
+
+    <section>
+        <div class="container">
+            <!-- <div class="row mt-4">
+                <a href="" class="btn btn-success">Add Product</a>
+            </div> -->
+    
+            
+              <table id="myTable" class="table mt-5">
+              <input type="text" class="mt-5 ml-auto" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Order Id</th>         
+          <th scope="col">Mobile</th>
+          <th scope="col">Bill Amount</th>
+          <th scope="col">Mode of Payment</th>
+          <th scope="col">Date</th>
+          <!-- <th>Image</th> -->
+          <th scope="col">Status</th>
+        
+        </tr>
+      </thead>
+      <% for(let i =0; i< result.length; i++) {%> 
+      <tbody>
+        <tr>
+            
+            <td><%= result[i].address.name%> </td>
+            <td><%= result[i]._id%> </td>
+            <td><%= result[i].address.mobile%> </td>
+            <td><%= result[i].bill%> </td>
+            <td><%= result[i].paymentMode%> </td>
+            <td><%= result[i].orderDate.toLocaleDateString()%> </td>
+          
+            <td>
+                <a href="/orderStatus?id=<%= result[i]._id  %> ">
+                
+                    <button class="btn btn-primary" >View Status</button>
+                  </a>
+                </form>
+              </td>
+        </tr>
+         
+      </tbody>
+      <% } %> 
+    </table>
+        </div>
+    </section>
+
+    <%- include('../layouts/footer.ejs') %>

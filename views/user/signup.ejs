@@ -1,0 +1,97 @@
+<%- include('../layouts/header.ejs') %> 
+
+<div class="container1" >
+     
+    <div class="row-container">
+
+        <section class="vh-10" style="background-color: #1a8fdda9;">
+            <div class="container py-5 h-100">
+              <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col col-xl-10">
+                  <div class="card" style="border-radius: 1rem;">
+                    <div class="row g-0">
+                      <div class="col-md-6 col-lg-5 d-none d-md-block">
+                      <div class="imge" style="margin-top: 70%; margin-left:25%" > <img src="data:image/png;base64,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"
+                          alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" /> </div>
+                  
+                        
+                      </div>
+                      <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                        <div class="card-body p-4 p-lg-5 text-black">
+          
+                          <form action="/user_registration" method="post">
+          
+                            <div class="d-flex align-items-center mb-3 pb-1">
+                              <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
+                              <span class="h1 fw-bold mb-0">Sign-up</span>
+                            </div>
+          
+                            <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Create new account</h5>
+                            
+                            <% if(response.passErr){ %>
+                              <p style="color: red;"><%= response.passErrMsg %> </p>
+                              <% } %> 
+
+                              <% if(response.accountErr){ %>
+                                <p style="color: red;"><%= response.accountErrMsg %> </p>
+                                <% } %>   
+
+
+
+                            <div class="form-outline mb-4">
+                              <label class="form-label" for="form2Example17"><b>Username</b></label>
+                              <input type="text" id="form2Example17" class="form-control form-control-lg" name="name" placeholder="Enter Username" />
+                              
+                            </div>
+
+                            <div class="form-outline mb-4">
+                              <label class="form-label" for="form2Example17"><b>Email</b></label>
+                              <input type="email" id="form2Example17" class="form-control form-control-lg" name="email" placeholder="Enter email_id" />
+                              
+                            </div>
+          
+                           
+                            <div class="form-outline mb-4">
+                              <label class="form-label" for="form2Example27"><b>Phone number</b></label>
+                              <input type="tel" id="form2Example27" class="form-control form-control-lg" name="phone" placeholder="Enter the phone number" />
+                              
+                            </div>
+
+                            <div class="form-outline mb-4">
+                              <label class="form-label" for="form2Example27"><b>Password</b></label>
+                              <input type="password" id="form2Example27" class="form-control form-control-lg" name="password" placeholder="Enter the password" />
+                              
+                            </div>
+
+                            <div class="form-outline mb-4">
+                              <label class="form-label" for="form2Example27"><b>Re-enter Password</b></label>
+                              <input type="password" id="form2Example27" class="form-control form-control-lg" name="confirmPassword" placeholder="Enter the password" />
+                              
+                            </div>
+          
+                            <div class="pt-1 mb-4">
+                              <button class="btn btn-dark btn-lg btn-block" type="submit">Sign Up </button>
+                            </div>
+          
+                            
+                            <p class="mb-5 pb-lg-2" style="color: #393f81;">Already have account <a href="/user_signin"
+                                style="color: #393f81;">Login</a></p>
+                            
+                          </form>
+          
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+           
+            </div>
+          </section>
+
+    </div>
+    </div>
+
+
+
+<%- include('../layouts/header.ejs') %> 

@@ -1,0 +1,146 @@
+<%- include ('../layouts/header.ejs') %> 
+  
+    <div class="container1" >
+     
+    <div class="row-container">
+
+        <section class="vh-100" style="background-color: #1a8fdda9;">
+            <div class="container py-5 h-100">
+              <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col col-xl-10">
+                  <div class="card" style="border-radius: 1rem; ">
+                    <div class="row g-0">
+                      <div class="col-md-6 col-lg-5 d-none d-md-block">
+                      <div class="imge" style="margin-top: 45%; margin-left:25%" > <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRm6-3JHnUnSnZ_yzSGFMy9a2EMkw9GTPygkQ&usqp=CAU"
+                          alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" /> </div>
+                  
+                        
+                      </div>
+                      <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                        <div class="card-body p-4 p-lg-5 text-black">
+          
+                          <form>
+          
+                            <div class="d-flex align-items-center mb-3 pb-1">
+                              <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
+                              <span class="h1 fw-bold mb-0">Login</span>
+                            </div>
+          
+                            <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign In With Mobile</h5>
+          
+                            <div class="form-outline mb-4">
+                              <label class="form-label" for="form2Example17"><b>Mobile number</b></label>
+                              <input type="tel" id="form2Example17" class="form-control form-control-lg" placeholder="Enter Mobile number" />
+                              
+                            </div>
+                            <label class="form-label" for="typePasswordX"><b>OTP</b> </label>
+                               <div class="otp-field mb-4">
+                                <input type="text" maxlength="1"  required/>
+                                <input type="text" maxlength="1" required/>
+                                <input class="space" type="text" maxlength="1" required/>
+                                <input type="text" maxlength="1" required/>
+                                <input type="text" maxlength="1" required/>
+                                <input type="text" maxlength="1" required/>
+                  </div>
+          
+                            <!-- <div class="form-outline mb-4">
+                              <label class="form-label" for="form2Example27"><b>OTP</b></label>
+                              <input type="text" id="form2Example27" class="form-control form-control-lg" placeholder="Enter the password" />
+                              
+                            </div><br> -->
+                            <!-- <div class="form-outline mb-4">
+                              <label class="form-label" for="form2Example27"><b>Phone number</b></label>
+                              <input type="password" id="form2Example27" class="form-control form-control-lg" placeholder="Enter the phone number" />
+                              
+                            </div> -->
+          
+                            <div class=" mb-4">
+                              <button class="btn btn-dark btn-lg btn-block" type="button">Login</button>
+                            </div>
+          
+                            <p class="mb-4  pb-lg-2" style="color: #393f81;"><b>  Login with email </b> <a href="/user_signin"
+                              style="color: #393f81;">Click Here</a><br>
+                              
+                            </p>
+                            <p class="mb-5 pb-lg-2" style="color: #393f81;">
+                              <b>Don't have an account?</b>   <a href="/user_registration"
+                              style="color: #393f81;">Register here</a>
+                          </p>
+                            
+                          </form>
+          
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+           
+            </div>
+          </section>
+
+    </div>
+    </div>
+ 
+
+
+<script>
+    const inputs = document.querySelectorAll(".otp-field input");
+
+    inputs.forEach((input, index) => {
+    input.dataset.index = index;
+    input.addEventListener("keyup", handleOtp);
+    input.addEventListener("paste", handleOnPasteOtp);
+    });
+
+    function handleOtp(e) {
+    /**
+     * <input type="text" 👉 maxlength="1" />
+     * 👉 NOTE: On mobile devices maxlength property isn't supported,
+     * So we to write our own logic to make it work. 🙂
+     */
+    const input = e.target;
+    let value = input.value;
+    let isValidInput = value.match(/[0-9a-z]/gi);
+    input.value = "";
+    input.value = isValidInput ? value[0] : "";
+
+    let fieldIndex = input.dataset.index;
+    if (fieldIndex < inputs.length - 1 && isValidInput) {
+        input.nextElementSibling.focus();
+    }
+
+    if (e.key === "Backspace" && fieldIndex > 0) {
+        input.previousElementSibling.focus();
+    }
+
+    // if (fieldIndex == inputs.length - 1 && isValidInput) {
+    //     submit();
+    // }
+    }
+
+    function handleOnPasteOtp(e) {
+    const data = e.clipboardData.getData("text");
+    const value = data.split("");
+        if (value.length === inputs.length) {
+            inputs.forEach((input, index) => (input.value = value[index]));
+            submit();   
+        }
+    }
+
+    // function submit() {
+    // console.log("Submitting...");
+    // // 👇 Entered OTP
+    // let otp = "";
+    // inputs.forEach((input) => {
+    //     otp += input.value;
+    //     input.disabled = true;
+    //     input.classList.add("disabled");
+    // });
+    // console.log(otp);
+    // // 👉 Call API below
+    // }
+</script>
+
+
+<%- include ('../layouts/footer.ejs') %> 

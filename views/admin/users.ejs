@@ -1,0 +1,69 @@
+<%- include('../layouts/header.ejs') %> 
+<%-include('../partials/admin-navbar.ejs') %> 
+
+<section>
+    <div class="container">
+        <!-- <div class="row mt-4">
+            <a href="" class="btn btn-success">Add Product</a>
+        </div> -->
+
+        
+          <table id="myTable" class="table mt-5">
+          <input type="text" class="mt-5 ml-auto" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+  <thead>
+    <tr>
+      <th scope="col">No</th>
+      <th scope="col">Title</th>
+      <th scope="col">Category</th>
+      <th scope="col">Description</th>
+      <!-- <th>Image</th> -->
+      <th>       Edit/Delete</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <!-- {{#each products}} -->
+    <% for(let i=0;i<users.length;i++) { %> 
+    <tr>
+      <th scope="row"><%= i+1  %> </th>
+      
+
+      <td><%= users[i].name %> </td>
+      <td><%= users[i].email %></td>
+      <td></td>
+      <!-- <td><img style="width:50px;height:50px" src="" alt=""></td> -->
+      <td>
+        <% if(users[i].blockStatus) { %> 
+            <form action="/admin_panel/users/unblock?id=<%= users[i]._id  %> " method="post">
+              <button class="btn btn-danger" onclick="return  confirm('Are you want to block <%= users[i].name %>')">UnBlock</button>
+            </form>
+            <% }else { %> 
+
+                <form action="/admin_panel/users/block?id=<%= users[i]._id  %>" method="post">
+                    <button class="btn btn-primary" onclick="return  confirm('Are you want to block <%= users[i].name %>')" >Block</button>
+
+                </form>
+        <% } %> 
+        
+      </td>
+    </tr>
+    <% }%> 
+    <!-- {{/each}} -->
+     
+  </tbody>
+</table>
+    </div>
+</section>
+<%- include ('../layouts/footer.ejs') %> 
+
+
+
+
+
+
+
+
+
+
+
+<%- include('../layouts/footer.ejs') %>
