@@ -28,23 +28,23 @@
                                 <form class="row g-3 mt-0" action="/cart/checkout/shipping/add-new-address" method="post">
                                     <div class="col-md-6">
                                         <label for="" class="form-label">Name</label>
-                                        <input type="text" class="form-control" id="name" name="name">
+                                        <input required type="text" class="form-control" id="name" name="name">
                                     </div>
                                     <div class="col-md-6">
                                       <label for="inputEmail4" class="form-label">Mobile number</label>
-                                      <input type="tel" name="mobile" max="10" class="form-control" id="">
+                                      <input required type="tel" name="mobile" max="10" min="10" class="form-control" id="">
                                     </div>
                                     <div class="col-12">
                                       <label for="inputAddress" class="form-label">Address</label>
-                                      <input type="text" class="form-control" name="address1" id="inputAddress" placeholder="">
+                                      <input required type="text" class="form-control" name="address1" id="inputAddress" placeholder="">
                                     </div>
                                     <div class="col-12">
                                       <label for="inputAddress2" class="form-label">Address 2</label>
-                                      <input type="text" class="form-control" name="address2" id="inputAddress2" placeholder="">
+                                      <input required type="text" class="form-control" name="address2" id="inputAddress2" placeholder="">
                                     </div>
                                     <div class="col-md-6">
                                       <label for="inputCity" class="form-label">City</label>
-                                      <input type="text" class="form-control" name="city" id="inputCity">
+                                      <input required type="text" class="form-control" name="city" id="inputCity">
                                     </div>
                                     <div class="col-md-4">
                                       <label for="inputState" class="form-label">State</label>
@@ -55,11 +55,11 @@
                                     </div>
                                     <div class="col-md-2">
                                       <label for="inputZip" class="form-label">Zip</label>
-                                      <input type="text" name="zip" class="form-control" id="inputZip">
+                                      <input required type="text" name="zip" class="form-control" id="inputZip">
                                     </div>
                                     <div class="col-12">
                                       <div class="form-check">
-                                        <input class="form-check-input" name="save" type="checkbox" id="gridCheck" checked name="save">
+                                        <input required class="form-check-input" name="save" type="checkbox" id="gridCheck" checked name="save">
                                         <label class="form-check-label" for="gridCheck">
                                           Save address
                                         </label>
