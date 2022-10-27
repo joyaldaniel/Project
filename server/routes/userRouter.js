@@ -13,7 +13,7 @@ router.get('/', services.userHome)
 router.get('/user_home',services.isLoggedIn,services.userhome)
 router.get('/user_logout', services.logout)
 
-router.post('/user_home/addToCart',services.addToCart)
+router.post('/user_home/addToCart',services.isLoggedIn,services.addToCart)
 router.get('/cart', services.isLoggedIn, services.cart)
 
 
