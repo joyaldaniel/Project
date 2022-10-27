@@ -9,7 +9,7 @@ const router=express.Router()
 router.get('/user_signin',services.isLoggedOut, services.loginRouter)
 router.post('/user_signin',services.login)
 
-router.get('/user_home', services.isLoggedIn, services.userHome)
+router.get('/', services.userHome)
 router.get('/user_logout', services.logout)
 
 router.post('/user_home/addToCart',services.addToCart)
@@ -31,9 +31,9 @@ router.post('/addToCart/cart-operation',services.isLoggedIn,services.cartOperati
 
 router.post('/cart/apply-coupon',services.applyCoupon)
 
-router.get('/myAccount',services.myAccount)
-router.get('/allOrders',services.allOrders)
-router.get('/orderStatus',services.orderStatus)
+router.get('/myAccount',services.isLoggedIn,services.myAccount)
+router.get('/allOrders',services.isLoggedIn,services.allOrders)
+router.get('/orderStatus',services.isLoggedIn,services.orderStatus)
 router.post('/cancel-order',services.cancelOrder)
 
 
@@ -50,7 +50,7 @@ router.get('/paypal',services.paypal)
 
 // router.post('/test', services.test)
 
-router.get('/wishlist',services.wishlist)
+router.get('/wishlist',services.isLoggedIn,services.wishlist)
 router.get('/user-wishlist',services.addToWishlist)
 router.get('/delete-wishlist',services.deleteFromWishlist)
 
