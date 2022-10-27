@@ -122,6 +122,32 @@ exports.userHome = (req, res) => {
        
     }
 
+
+    exports.userhome = (req, res) => {
+        if(req.query.category){
+         Product.find({category : req.query.category})
+                 .then((result) => {
+                         Category.find()
+                                 .then((item) => {
+                                         res.render('user/home',{result,item});      
+                                 })
+                 })
+        }else{
+         
+         Category.find()
+         .then((item)=>{
+                 Product.find()
+                 .then((result)=>{
+                 if(result){
+                         res.render('user/home',{result,item});    
+                 }
+         }).catch((err)=>console.log(err))
+ 
+         })
+ }
+        
+     }
+
 exports.cart=(req,res)=>{
         Category.find()
         .then((item)=>{

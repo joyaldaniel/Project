@@ -10,6 +10,7 @@ router.get('/user_signin',services.isLoggedOut, services.loginRouter)
 router.post('/user_signin',services.login)
 
 router.get('/', services.userHome)
+router.get('/user_home',services.isLoggedIn,services.userhome)
 router.get('/user_logout', services.logout)
 
 router.post('/user_home/addToCart',services.addToCart)
