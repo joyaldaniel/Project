@@ -18,53 +18,59 @@
 
                     <% for(let i=0; i<result.length; i++) { %>
                         <div class="row">
-                        <div class="col mb-5">
-                            <div class="card h-100">
-                                <!-- Sale badge-->
-                                <a href="user-wishlist?id=<%= result[i]._id  %> ">
-                                <div class="badge  text-secondary  position-absolute"
-                                    style="top: 0.5rem; right: 0.5rem; cursor: pointer;"><i
-                                        class="fa fa-heart fa-xl"></i></div></a>
-                                <!-- Product image-->
-                                <img style="height: 100%;width:100%; " class="card-img-top" src="/images/<%= result[i].image1 %> " alt="..." />
-                                <!-- Product details-->
-                                <div class="card-body p-4">
-                                    <div class="text-center">
-                                        <!-- Product name--> 
-                                        <a href="/product-view?id=<%= result[i]._id %> ">                                     
-                                        <h5 class="fw-bolder">
-                                            <%= result[i].productName %>
-                                        </h5></a> 
-                                    
-                                        <!-- Product reviews-->
-                                        <div class="d-flex justify-content-center small text-warning mb-2">
-                                            <div class="bi-star-fill"></div>
-                                            <div class="bi-star-fill"></div>
-                                            <div class="bi-star-fill"></div>
-                                            <div class="bi-star-fill"></div>
-                                            <div class="bi-star-fill"></div>
-                                        </div>
-                                        <!-- Product price-->
-                                        <span style=" margin-right: 10px; font-size: 20px; font-weight: 600;">₹ <%=
-                                                result[i].discountedPrice %></span>
-                                        <span class="text-muted text-decoration-line-through" style="font-size: 16px">₹
-                                            <%= result[i].actualPrice %> </span>
-                                    </div>
-                                </div>
-                                <!-- Product actions-->
-                                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <div class="col mb-5">
+                                <div class="card h-100">
+                                    <!-- Sale badge-->
+                                    <a href="user-wishlist?id=<%= result[i]._id  %> ">
+                                        <div class="badge  text-secondary  position-absolute"
+                                            style="top: 0.5rem; right: 0.5rem; cursor: pointer;"><i
+                                                class="fa fa-heart fa-xl"></i></div>
+                                    </a>
+                                    <!-- Product image-->
+                                    <img style="height: 100%;width:100%; " class="card-img-top"
+                                        src="/images/<%= result[i].image1 %> " alt="..." />
+                                    <!-- Product details-->
+                                    <div class="card-body p-4">
+                                        <div class="text-center">
+                                            <!-- Product name-->
+                                            <a href="/product-view?id=<%= result[i]._id %> ">
+                                                <h5 class="fw-bolder">
+                                                    <%= result[i].productName %>
+                                                </h5>
+                                            </a>
 
-                                    <form action="/addToCart?id=<%= result[i]._id %> " method="post">
-                                        <div class="text-center"><button type="submit"
-                                                class="btn btn-outline-dark mt-auto mb-3" style="width: 100%;">Add to
-                                                cart</button></div>
-                                    </form>
-                                    <!-- <div class="text-center"><a class="btn btn-outline-dark mt-auto mb-3"
+                                            <!-- Product reviews-->
+                                            <div class="d-flex justify-content-center small text-warning mb-2">
+                                                <div class="bi-star-fill"></div>
+                                                <div class="bi-star-fill"></div>
+                                                <div class="bi-star-fill"></div>
+                                                <div class="bi-star-fill"></div>
+                                                <div class="bi-star-fill"></div>
+                                            </div>
+                                            <!-- Product price-->
+                                            <span style=" margin-right: 10px; font-size: 20px; font-weight: 600;">₹ <%=
+                                                    result[i].discountedPrice %></span>
+                                            <span class="text-muted text-decoration-line-through"
+                                                style="font-size: 16px">₹
+                                                <%= result[i].actualPrice %>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <!-- Product actions-->
+                                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+
+                                        <form action="/addToCart?id=<%= result[i]._id %> " method="post">
+                                            <div class="text-center"><button type="submit"
+                                                    class="btn btn-outline-dark mt-auto mb-3" style="width: 100%;">Add
+                                                    to
+                                                    cart</button></div>
+                                        </form>
+                                        <!-- <div class="text-center"><a class="btn btn-outline-dark mt-auto mb-3"
                                             style="width: 100%;" href="/cart">Go to cart</a></div>
                                     <div class="text-center"><a class="btn btn-outline-dark mt-auto"
                                             style="width: 100%;" href="#">Buy Now</a></div> -->
+                                    </div>
                                 </div>
-                            </div>
                             </div>
                         </div>
                         <% } %>

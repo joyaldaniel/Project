@@ -1,58 +1,62 @@
-<%-include ('../layouts/header.ejs') %> 
-<%-include('../partials/admin-navbar.ejs')  %> 
+<%-include ('../layouts/header.ejs') %>
+    <%-include('.. /partials/admin-navbar.ejs') %>
 
-<div class="wrapper container">
-    <div class="row justify-content-center mt-5" > 
-        <div class="col-5"> 
-            <form action="/admin-category" method="post"> 
-    
-                <div class="form-group"> 
-                    <label for="category">Category</label> 
-                    <input type="text" name="category" class="form-control" id="category"  required/> 
-                </div> 
-                <% if(validation.category) {%>
-                    <p style="color: red;">Already added</p>
-                    <% } %>  
-                 <div>
-                    <button type="submit" class="btn btn-warning mt-3">Add Category</button> 
-                </div> 
-            </form> 
-            <div class="table-responsive">
-                <table id="myTable" class="table table-hover mt-5">
-                    <thead>
-                      <tr>
-                        <th scope="col">Slno</th>
-                        <th scope="col">Category</th>
-                        <th scope="col">Delete</th>
- 
-                      </tr>
-                
-                    </thead>
-              
-                    
-                    <% for(let i =0; i< result.length; i++) {%> 
-                    <tbody>
-                    <tr>
-                          <th scope="row"> <%= i+1  %> </th>
-                          <td><%= result[i].category%> </td>
+        <div class="wrapper container">
+            <div class="row justify-content-center mt-5">
+                <div class="col-5">
+                    <form action="/admin-category" method="post">
 
-                          <td>
-                            
-                            <a href="/admin-category/delete?id=<%= result[i].category  %> ">
-                                <button type="submit" class="btn btn-danger">Delete</button>
-                              </a>
-                            
-                          </td>
-                          
-                        </tr>
-                    </tbody>
-                    <% } %> 
-                </table>
+                        <div class="form-group">
+                            <label for="category">Category</label>
+                            <input type="text" name="category" class="form-control" id="category" required />
+                        </div>
+                        <% if(validation.category) {%>
+                            <p style="color: red;">Already added</p>
+                            <% } %>
+                                <div>
+                                    <button type="submit" class="btn btn-warning mt-3">Add Category</button>
+                                </div>
+                    </form>
+                    <div class="table-responsive">
+                        <table id="myTable" class="table table-hover mt-5">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Slno</th>
+                                    <th scope="col">Category</th>
+                                    <th scope="col">Delete</th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <% for(let i=0; i< result.length; i++) {%>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">
+                                            <%= i+1 %>
+                                        </th>
+                                        <td>
+                                            <%= result[i].category%>
+                                        </td>
+
+                                        <td>
+
+                                            <a href="/admin-category/delete?id=<%= result[i].category  %> ">
+                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                            </a>
+
+                                        </td>
+
+                                    </tr>
+                                </tbody>
+                                <% } %>
+                        </table>
+                    </div>
+                </div>
             </div>
-            </div>
-        </div> 
-      
-   
 
 
-<%- include ('../layouts/footer.ejs') %> 
+
+
+            <%- include ('../layouts/footer.ejs') %>

@@ -1,21 +1,22 @@
-<%-include ('../layouts/header.ejs') %> 
-<%-include('../partials/admin-navbar.ejs')  %> 
+<%-include ('../layouts/header.ejs') %>
+  <%-include('.. /partials/admin-navbar.ejs') %>
 
 
-<section>
-  <div class="table-responsive container">
-      <div class="container">
-        <div class="input-group mt-5">
-          <a href="/admin_panel/add-products">
-          <button class="btn btn-primary">Add Product</button>
-          </a>
-          <div style="position: absolute; right: 0px; width: 300px;">
-            <input style="align-items: flex-end" type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="Search..."/>
+    <section>
+      <div class="table-responsive container">
+        <div class="container">
+          <div class="input-group mt-5">
+            <a href="/admin_panel/add-products">
+              <button class="btn btn-primary">Add Product</button>
+            </a>
+            <div style="position: absolute; right: 0px; width: 300px;">
+              <input style="align-items: flex-end" type="text" id="myInput" class="form-control" onkeyup="myFunction()"
+                placeholder="Search..." />
+            </div>
           </div>
-        </div>
-          
-        <div class="table-responsive">
-          <table id="myTable" class="table table-hover mt-5">
+
+          <div class="table-responsive">
+            <table id="myTable" class="table table-hover mt-5">
               <thead>
                 <tr>
                   <th scope="col">Slno</th>
@@ -30,23 +31,41 @@
                   <th scope="col">image-2</th>
                   <th scope="col">Action</th>
                 </tr>
-          
+
               </thead>
-        
-              
-              <% for(let i =0; i< result.length; i++) {%> 
-              <tbody>
-              <tr>
-                    <th scope="row"> <%=i+1  %> </th>
-                    <td><%= result[i].productName%> </td>
-                    <td><%= result[i].actualPrice%> </td>
-                    <td><%= result[i].discountedPrice%> </td>
-                    <td><%= result[i].description%> </td>
-                    <td><%= result[i].stock%> </td>
-                    <td><%= result[i].category %> </td>
+
+
+              <% for(let i=0; i< result.length; i++) {%>
+                <tbody>
+                  <tr>
+                    <th scope="row">
+                      <%=i+1 %>
+                    </th>
+                    <td>
+                      <%= result[i].productName%>
+                    </td>
+                    <td>
+                      <%= result[i].actualPrice%>
+                    </td>
+                    <td>
+                      <%= result[i].discountedPrice%>
+                    </td>
+                    <td>
+                      <%= result[i].description%>
+                    </td>
+                    <td>
+                      <%= result[i].stock%>
+                    </td>
+                    <td>
+                      <%= result[i].category %>
+                    </td>
                     <!-- <td><%=// result[i].subCategory%> </td> -->
-                    <td><%= result[i].image1%> </td>
-                    <td><%= result[i].image2%> </td>
+                    <td>
+                      <%= result[i].image1%>
+                    </td>
+                    <td>
+                      <%= result[i].image2%>
+                    </td>
                     <td>
                       <a href="/admin_panel/edit-product?id=<%= result[i]._id  %> ">
                         <i class="fa-solid fa-pen-to-square"></i>
@@ -54,41 +73,41 @@
                       <a href="/admin_panel/delete-product?id=<%= result[i]._id  %> ">
                         <i class="fa-solid fa-trash"></i>
                       </a>
-                      
+
                     </td>
-                    
+
                   </tr>
-              </tbody>
-              <% } %> 
-          </table>
+                </tbody>
+                <% } %>
+            </table>
+            </table>
+          </div>
+
+        </div>
         </table>
       </div>
-  
-    </div>
-  </table>
-</div>
-</section>
+    </section>
 
 
-<script>
-  function myFunction() {
-    let input = document.getElementById("myInput");
-    let filter = input.value.toUpperCase();
-    let table = document.getElementById("myTable");
-    let tr = table.getElementsByTagName("tr");
-    for (let i = 0; i < tr.length; i++) {
-        let td = tr[i].getElementsByTagName("td")[0];
-      if (td) {
-        let txtValue = td.textContent || td.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-          tr[i].style.display = "";
-        } else {
-          tr[i].style.display = "none";
+    <script>
+      function myFunction() {
+        let input = document.getElementById("myInput");
+        let filter = input.value.toUpperCase();
+        let table = document.getElementById("myTable");
+        let tr = table.getElementsByTagName("tr");
+        for (let i = 0; i < tr.length; i++) {
+          let td = tr[i].getElementsByTagName("td")[0];
+          if (td) {
+            let txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              tr[i].style.display = "";
+            } else {
+              tr[i].style.display = "none";
+            }
+          }
         }
-      }       
-    }
-  }
-  </script>
-  
+      }
+    </script>
 
-<%- include ('../layouts/footer.ejs') %> 
+
+    <%- include ('../layouts/footer.ejs') %>

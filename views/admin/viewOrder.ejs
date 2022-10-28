@@ -1,10 +1,8 @@
+<%- include('../layouts/header.ejs') %>
+  <%-include('.. /partials/admin-navbar.ejs') %>
 
-<%- include('../layouts/header.ejs') %> 
-<%-include('../partials/admin-navbar.ejs') %> 
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 
 
@@ -13,128 +11,159 @@
 
 
 
-<section>
+
+
+    <section>
 
 
 
 
- 
 
-  
-    <div class="container" id="pt">
+
+
+      <div class="container" id="pt">
         <!-- <div class="row mt-4">
             <a href="" class="btn btn-success">Add Product</a>
         </div> -->
 
-        
-          <table id="usertable" class="table mt-5">
+
+        <table id="usertable" class="table mt-5">
           <input type="text" class="mt-5 ml-auto" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
 
           <div class="dropdown">
-            <button style="margin-left:40vh ; margin-top: -9vh;" class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button style="margin-left:40vh ; margin-top: -9vh;" class="btn btn-success dropdown-toggle" type="button"
+              id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Download
-           </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <li><a  class="dropdown-item" href="/admin/exportExcel">Excel</a></li>&nbsp;&nbsp;
-                <li><class="dropdown-item"  style="padding-left: 3vh;" onclick="myfun('pt')" > Pdf</li>
-          
-            </ul>
-          </div>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <li><a class="dropdown-item" href="/admin/exportExcel">Excel</a></li>&nbsp;&nbsp;
+              <li>
+                <class="dropdown-item" style="padding-left: 3vh;" onclick="myfun('pt')"> Pdf
+              </li>
 
-  <thead>
-    <tr>
-      <th scope="col">No</th>
-      <th scope="col">Order Id</th>
-      <th scope="col">Product Name</th>
-      <th scope="col">Quantity</th>
-      <th scope="col">Price</th>
-      <th scope="col">Image</th>      
-      <th scope="col">Order Status</th>
-      <!-- <th>Image</th> -->
-      <th scope="col">Accept / Cancel</th>
-     
-      
-      
-    </tr>
-  </thead>
+              </ul>
+            </div>
 
- 
+            <thead>
+              <tr>
+                <th scope="col">No</th>
+                <th scope="col">Order Id</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Price</th>
+                <th scope="col">Image</th>
+                <th scope="col">Order Status</th>
+                <!-- <th>Image</th> -->
+                <th scope="col">Accept / Cancel</th>
 
 
 
-
-  <% for(let i =0; i< result.items.length; i++) {%> 
-  <tbody>
-    <tr>
-        <th scope="row"> <%=i+1  %> </th>
-        <td><%= result.items[i].itemId%> </td>
-        <td><%= result.items[i].productName%> </td>
-        <td><%= result.items[i].quantity%> </td>
-        <td><%= result.items[i].price%> </td>
-        <td> <img src="/images/<%= result.items[i].image1 %> " style="height: 75px;" alt=""> </td>
-        <td><%= result.items[i].orderStatus%> </td>
-      
-        <td>
-          <% if(result.items[i].orderStatus==="processed"){ %> 
-          <form action="/admin-orders/order-accept?id=<%= result.items[i].itemId  %>&orderId=<%= result._id  %> " method="post">
-            <button class="btn btn-success" >Accept</button>
-          </form>
-          <form action="/admin-orders/order-cancel?id=<%= result.items[i].itemId %>&orderId=<%= result._id %>  " method="post">
-            <button class="btn btn-danger" >Cancel</button>
-          </form>
-          <% }else if(result.items[i].orderStatus==='Processed'){ %> 
-            <form action="/admin-orders/order-processed?id=<%= result.items[i].itemId  %>&orderId=<%= result._id  %> " method="post">
-                <button class="btn btn-warning" >Shipped</button>
-            </form>
-            <% }else if(result.items[i].orderStatus==='Shipped') {%> 
-              <form action="/admin-orders/order-shipped?id=<%= result.items[i].itemId  %>&orderId=<%= result._id  %> " method="post">
-                  <button class="btn btn-info" >Delivered</button>
-              </form>
-              <% }else if(result.items[i].orderStatus==='Delivered'){ %> 
-                
-                <i class="fa fa-check" style="font-size:48px;color:green"></i>
-                <% }else if(result.items[i].orderStatus==='Cancel'){ %> 
-                  <i class="fa fa-ban " style="font-size:48px;color:red ;" aria-hidden="true"></i>
-                  <% } %> 
-              
-         
-           
-      </td>
-          
-    </tr>
-     
-  </tbody>
-  <% } %> 
-</table>
-    </div>
-</section>
+              </tr>
+            </thead>
 
 
 
 
 
-<script>
-  console.log("script working")
-  function myfun(pt) {
-      var bk = document.body.innerHTML;
-      var dv = document.getElementById('pt').innerHTML;
-      document.body.innerHTML = dv;
-      document.body.style.padding = "20px"
-      window.print();
-      location.reload();
-  }
-  $(document).ready(function () {
-      $('#usertable').DataTable()
-  });
-</script>
+
+            <% for(let i=0; i< result.items.length; i++) {%>
+              <tbody>
+                <tr>
+                  <th scope="row">
+                    <%=i+1 %>
+                  </th>
+                  <td>
+                    <%= result.items[i].itemId%>
+                  </td>
+                  <td>
+                    <%= result.items[i].productName%>
+                  </td>
+                  <td>
+                    <%= result.items[i].quantity%>
+                  </td>
+                  <td>
+                    <%= result.items[i].price%>
+                  </td>
+                  <td> <img src="/images/<%= result.items[i].image1 %> " style="height: 75px;" alt=""> </td>
+                  <td>
+                    <%= result.items[i].orderStatus%>
+                  </td>
+
+                  <td>
+                    <% if(result.items[i].orderStatus==="processed" ){ %>
+                      <form
+                        action="/admin-orders/order-accept?id=<%= result.items[i].itemId  %>&orderId=<%= result._id  %> "
+                        method="post">
+                        <button class="btn btn-success">Accept</button>
+                      </form>
+                      <form
+                        action="/admin-orders/order-cancel?id=<%= result.items[i].itemId %>&orderId=<%= result._id %>  "
+                        method="post">
+                        <button class="btn btn-danger">Cancel</button>
+                      </form>
+                      <% }else if(result.items[i].orderStatus==='Processed' ){ %>
+                        <form
+                          action="/admin-orders/order-processed?id=<%= result.items[i].itemId  %>&orderId=<%= result._id  %> "
+                          method="post">
+                          <button class="btn btn-warning">Shipped</button>
+                        </form>
+                        <% }else if(result.items[i].orderStatus==='Shipped' ) {%>
+                          <form
+                            action="/admin-orders/order-shipped?id=<%= result.items[i].itemId  %>&orderId=<%= result._id  %> "
+                            method="post">
+                            <button class="btn btn-info">Delivered</button>
+                          </form>
+                          <% }else if(result.items[i].orderStatus==='Delivered' ){ %>
+
+                            <i class="fa fa-check" style="font-size:48px;color:green"></i>
+                            <% }else if(result.items[i].orderStatus==='Cancel' ){ %>
+                              <i class="fa fa-ban " style="font-size:48px;color:red ;" aria-hidden="true"></i>
+                              <% } %>
 
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+                  </td>
+
+                </tr>
+
+              </tbody>
+              <% } %>
+        </table>
+      </div>
+    </section>
 
 
 
 
-<%- include ('../layouts/footer.ejs') %> 
-<%- include('../layouts/footer.ejs') %>
+
+    <script>
+      console.log("script working")
+      function myfun(pt) {
+        var bk = document.body.innerHTML;
+        var dv = document.getElementById('pt').innerHTML;
+        document.body.innerHTML = dv;
+        document.body.style.padding = "20px"
+        window.print();
+        location.reload();
+      }
+      $(document).ready(function () {
+        $('#usertable').DataTable()
+      });
+    </script>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"></script>
+
+
+
+
+    <%- include ('../layouts/footer.ejs') %>
+      <%- include('../layouts/footer.ejs') %>

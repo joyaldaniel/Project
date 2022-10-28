@@ -1,89 +1,103 @@
 <%- include('../layouts/header.ejs') %>
-    <%- include('../partials/user-navbar-loggedin.ejs') %>
+  <%- include('../partials/user-navbar-loggedin.ejs') %>
 
-  
+
     <section class="h-100 h-custom" style="background-color: #d2c9ff;">
-        <div class="container py-5 h-100">
-          <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-12">
-              <div class="card card-registration card-registration-2" style="border-radius: 15px;">
-                <div class="card-body p-0">
-                  <div class="row g-0">
-                    <div class="col-lg-8">
-                      <div class="p-5">
-                        <div class="d-flex justify-content-between align-items-center mb-5">
-                          <h1 class="fw-bold mb-0 text-black">Shopping Cart</h1>
-                          <h6 class="mb-0 text-muted"><%= result.items.length %> items</h6>
-                        </div>
-                        <hr class="my-4">
-
-                        <% if(result.items.length===0){ %> 
-                          <p>No items found</p>
-                          <hr class="my-4">
-                          <% } %> 
-      
-    
-                        <% for(let i=0;i<result.items.length;i++){ %> 
-    
-                        
-                        <div class="row mb-4 d-flex justify-content-between align-items-center">
-                          <div class="col-md-2 col-lg-2 col-xl-2">
-                            <img
-                              src="/images/<%= result.items[i].image1 %> "
-                              class="img-fluid rounded-3" alt="Cotton T-shirt">
-                          </div>
-                          <div class="col-md-3 col-lg-3 col-xl-3">
-                            <h6 class="text-muted"><%= result.items[i].category %> </h6>
-                            <a href="/product-view?id=<%= result.items[i].itemId %>"></a>
-                            <h6 class="mb-0"><%= result.items[i].productName %> </h6>
-                            <!-- <h6 class="text-black mb-0"></%= result.items[i].itemId %> </h6> -->
-                          </div>
-                          <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                            <form action='/addToCart/cart-operation?id=<%= result.items[i].itemId%>&sub=true' method="post">
-                              <button class="btn btn-link px-2" type="submit"
-                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                                <i class="fas fa-minus"></i>
-                              </button>
-                            </form>
-      
-                            <input id="form1" min="0" name="quantity" value="<%= result.items[i].quantity  %> " type="text"
-                              class="form-control form-control-sm" />
-      
-                              <form action='/addToCart/cart-operation?id=<%= result.items[i].itemId%>&add=true' method="post">
-                                <button class="btn btn-link px-2" type="submit"
-                                  onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                                  <i class="fas fa-plus"></i> 
-                                </button>
-                              </form>
-                          </div>
-                          <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                            <h6 class="mb-0"><%= result.items[i].price %> </h6>
-                          </div>
-                          <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                            <a href="/delete-from-cart?id=<%= result.items[i]._id %> " class="text-muted"><i class="fas fa-times"></i></a>
-                          </div>
-                        </div>
-      
-                        <hr class="my-4">
-                        <% } %> 
-   
-    <div class="pt-5">
-                          <h6 class="mb-0"><a href="/user_home" class="text-body"><i
-                                class="fas fa-long-arrow-alt-left me-2"></i>Back to shop</a></h6>
-                        </div>
+      <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-12">
+            <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+              <div class="card-body p-0">
+                <div class="row g-0">
+                  <div class="col-lg-8">
+                    <div class="p-5">
+                      <div class="d-flex justify-content-between align-items-center mb-5">
+                        <h1 class="fw-bold mb-0 text-black">Shopping Cart</h1>
+                        <h6 class="mb-0 text-muted">
+                          <%= result.items.length %> items
+                        </h6>
                       </div>
-                    </div>
-                    <div class="col-lg-4 bg-grey">
-                      <div class="p-5">
-                        <h3 class="fw-bold mb-5 mt-2 pt-1">Summary</h3>
+                      <hr class="my-4">
+
+                      <% if(result.items.length===0){ %>
+                        <p>No items found</p>
                         <hr class="my-4">
-      
-                        <div class="d-flex justify-content-between mb-4">
-                          <h5 class="text-uppercase"><%= result.items.length %>  items </h5>
-                          <h5><%= result.bill %> </h5>
-                        </div>
-      
-                        <!-- <h5 class="text-uppercase mb-3">Shipping</h5>
+                        <% } %>
+
+
+                          <% for(let i=0;i<result.items.length;i++){ %>
+
+
+                            <div class="row mb-4 d-flex justify-content-between align-items-center">
+                              <div class="col-md-2 col-lg-2 col-xl-2">
+                                <img src="/images/<%= result.items[i].image1 %> " class="img-fluid rounded-3"
+                                  alt="Cotton T-shirt">
+                              </div>
+                              <div class="col-md-3 col-lg-3 col-xl-3">
+                                <h6 class="text-muted">
+                                  <%= result.items[i].category %>
+                                </h6>
+                                <a href="/product-view?id=<%= result.items[i].itemId %>"></a>
+                                <h6 class="mb-0">
+                                  <%= result.items[i].productName %>
+                                </h6>
+                                <!-- <h6 class="text-black mb-0"></%= result.items[i].itemId %> </h6> -->
+                              </div>
+                              <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                                <form action='/addToCart/cart-operation?id=<%= result.items[i].itemId%>&sub=true'
+                                  method="post">
+                                  <button class="btn btn-link px-2" type="submit"
+                                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                                    <i class="fas fa-minus"></i>
+                                  </button>
+                                </form>
+
+                                <input id="form1" min="0" name="quantity" value="<%= result.items[i].quantity  %> "
+                                  type="text" class="form-control form-control-sm" />
+
+                                <form action='/addToCart/cart-operation?id=<%= result.items[i].itemId%>&add=true'
+                                  method="post">
+                                  <button class="btn btn-link px-2" type="submit"
+                                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                                    <i class="fas fa-plus"></i>
+                                  </button>
+                                </form>
+                              </div>
+                              <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                                <h6 class="mb-0">
+                                  <%= result.items[i].price %>
+                                </h6>
+                              </div>
+                              <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                                <a href="/delete-from-cart?id=<%= result.items[i]._id %> " class="text-muted"><i
+                                    class="fas fa-times"></i></a>
+                              </div>
+                            </div>
+
+                            <hr class="my-4">
+                            <% } %>
+
+                              <div class="pt-5">
+                                <h6 class="mb-0"><a href="/user_home" class="text-body"><i
+                                      class="fas fa-long-arrow-alt-left me-2"></i>Back to shop</a></h6>
+                              </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 bg-grey">
+                    <div class="p-5">
+                      <h3 class="fw-bold mb-5 mt-2 pt-1">Summary</h3>
+                      <hr class="my-4">
+
+                      <div class="d-flex justify-content-between mb-4">
+                        <h5 class="text-uppercase">
+                          <%= result.items.length %> items
+                        </h5>
+                        <h5>
+                          <%= result.bill %>
+                        </h5>
+                      </div>
+
+                      <!-- <h5 class="text-uppercase mb-3">Shipping</h5>
       
                         <div class="mb-4 pb-2">
                           <select class="select">
@@ -93,19 +107,20 @@
                             <option value="4">Four</option>
                           </select>
                         </div> -->
-                        
-      
-                        <hr class="my-4">
-      
-                        <div class="d-flex justify-content-between mb-5">
-                          <h5 class="text-uppercase">Total price</h5>
-                          <h5><%= result.bill %></h5>
-                        </div>
-                        <a href="/cart/checkout">
-                        <button type="button" class="btn btn-dark btn-block btn-lg"
-                          data-mdb-ripple-color="dark">Proceed To checkout</button></a>
-      
+
+
+                      <hr class="my-4">
+
+                      <div class="d-flex justify-content-between mb-5">
+                        <h5 class="text-uppercase">Total price</h5>
+                        <h5>
+                          <%= result.bill %>
+                        </h5>
                       </div>
+                      <a href="/cart/checkout">
+                        <button type="button" class="btn btn-dark btn-block btn-lg" data-mdb-ripple-color="dark">Proceed
+                          To checkout</button></a>
+
                     </div>
                   </div>
                 </div>
@@ -113,7 +128,8 @@
             </div>
           </div>
         </div>
-      </section>
-    
+      </div>
+    </section>
 
-        <%- include('../layouts/footer.ejs') %>
+
+    <%- include('../layouts/footer.ejs') %>
